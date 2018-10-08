@@ -1,0 +1,12 @@
+#!/bin/sh
+apt-get update
+apt-get -y install nginx php-fpm
+if [ ! -f /var/www/html/bootcamp.tar.gz ]; then
+   cd /var/www/html
+   mv index.nginx-debian.html index.nginx-debian.bkp
+   wget https://s3.amazonaws.com/fndiaz-bkt/bootcamp.tar.gz
+   tar xvfz bootcamp.tar.gz
+   cp nginx-conf/default-nginx /etc/nginx/sites-available/default
+   chown www-data:www-data /var/www/html/*
+fi
+/etc/init.d/nginx restart

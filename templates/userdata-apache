@@ -1,0 +1,10 @@
+#!/bin/sh
+yum -y install httpd php mysql php-mysql
+chkconfig httpd on
+if [ ! -f /var/www/html/bootcamp.tar.gz ]; then
+   cd /var/www/html
+   wget https://s3.amazonaws.com/fndiaz-bkt/bootcamp.tar.gz
+   tar xvfz bootcamp.tar.gz
+   chown apache:root /var/www/html/*
+fi
+/etc/init.d/httpd start
