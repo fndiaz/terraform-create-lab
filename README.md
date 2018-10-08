@@ -1,5 +1,5 @@
 # terraform-create-lab
-Basic terraform create basic infrastructure
+Terraform create basic infrastructure
 
 execute:
 ```terraform
